@@ -32,10 +32,10 @@ describe('undent', () => {
         ).to.eql('\thello\nworld');
     });
 
-    it('retains whitespace in the middle', () => {
+    it('retains newlines in the middle', () => {
         expect(
             undent`hello\n\t\nworld`
-        ).to.eql('hello\n\t\nworld');
+        ).to.eql('hello\n\nworld');
     });
 
     it('removes trailing newline', () => {

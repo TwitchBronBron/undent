@@ -56,8 +56,13 @@ export function undent(...args: any[]) {
     for (let i = 0; i < lines.length; i++) {
         //separate the line from its trailing newline (so we don't accidentally trim the newline)
         const match = /(.*)(\r?\n)?/.exec(lines[i]) as unknown as RegExpExecArray;
-        const [, line, newline] = match;
-        lines[i] = line.substring(minIndent) + (newline ?? '');
+        let [, line, newline] = match;
+        line = line.substring(minIndent);
+        //trim trailing whitespace
+        line = line.trimEnd();
+        //append the newline
+        line += newline ?? '';
+        lines[i] = line;
     }
 
     let result = lines.join('');
@@ -65,4 +70,3 @@ export function undent(...args: any[]) {
     result = result.replace(/\r?\n$/, '');
     return result;
 }
-
