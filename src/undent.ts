@@ -1,21 +1,21 @@
 export function undent(text: string): string;
 export function undent(literals: TemplateStringsArray, ...placeholders: any[]): string;
 export function undent(...args: any[]) {
-    const [literals, expressions] = args;
     let fullText: string;
-    //when called as a function
-    if (typeof args[0] === 'string') {
-        fullText = args[0];
-
-        //when called as a tagged template literal
-    } else {
+    //when called as a tagged template literal
+    if (Array.isArray(args[0])) {
+        const [literals, ...expressions] = args;
         //merge all text together
         let parts = [];
         for (let i = 0; i < literals.length; i++) {
-            const expression = expressions ? expressions[i] : '';
-            parts.push(literals[i], expression ?? '');
+            parts.push(literals[i], expressions[i] ?? '');
         }
         fullText = parts.join('');
+
+        //when called as a function
+    } else {
+        fullText = args[0];
+
     }
     const lines: string[] = [];
     let match: RegExpExecArray | null;

@@ -61,4 +61,19 @@ describe('undent', () => {
             undent(['a', 'b'] as any, 'c')
         ).to.eql('acb');
     });
+
+    it('works when tagged template literal signature called manually with bad args', () => {
+        expect(
+            undent(['a', 'b'] as any)
+        ).to.eql('ab');
+    });
+
+    it('works for variables in tagged template literals', () => {
+        const code = `text`;
+        expect(
+            undent`${code}-${code}`
+        ).to.eql(
+            `text-text`
+        );
+    });
 });
