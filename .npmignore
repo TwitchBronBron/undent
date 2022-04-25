@@ -1,0 +1,10 @@
+.vscode
+.git
+.nyc_output
+coverage
+dist/*.spec.*
+src
+.gitignore
+tsconfig.json
+.eslintrc.js
+*.tgz

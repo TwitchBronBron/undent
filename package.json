@@ -1,0 +1,76 @@
+{
+    "name": "undent",
+    "version": "0.1.0",
+    "description": "Smartly removes leading indentation from multiline strings",
+    "scripts": {
+        "preversion": "npm run build && npm run lint && npm run test",
+        "build": "rimraf out && tsc",
+        "watch": "rimraf out && tsc --watch",
+        "lint": "eslint \"src/**\"",
+        "test": "nyc mocha",
+        "test:nocover": "mocha",
+        "publish-coverage": "nyc report --reporter=text-lcov | coveralls"
+    },
+    "mocha": {
+        "spec": "src/**/*.spec.ts",
+        "require": [
+            "source-map-support/register",
+            "ts-node/register"
+        ],
+        "fullTrace": true,
+        "timeout": 0,
+        "watchExtensions": [
+            "ts"
+        ]
+    },
+    "main": "dist/index.js",
+    "typings": "dist/index.d.ts",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/twitchbronbron/undent.git"
+    },
+    "author": "",
+    "license": "MIT",
+    "nyc": {
+        "include": [
+            "src/**/*.ts",
+            "!src/**/*.spec.ts"
+        ],
+        "extension": [
+            ".ts"
+        ],
+        "require": [
+            "ts-node/register",
+            "source-map-support/register"
+        ],
+        "reporter": [
+            "text-summary",
+            "html"
+        ],
+        "sourceMap": true,
+        "instrument": true,
+        "check-coverage": false,
+        "lines": 100,
+        "statements": 100,
+        "functions": 100,
+        "branches": 100
+    },
+    "devDependencies": {
+        "@types/chai": "^4.3.1",
+        "@types/mocha": "^9.1.1",
+        "@types/node": "^11.9.0",
+        "@types/sinon": "^9.0.4",
+        "@typescript-eslint/eslint-plugin": "^5.20.0",
+        "@typescript-eslint/parser": "^5.20.0",
+        "chai": "^4.3.6",
+        "coveralls": "^3.1.1",
+        "eslint": "^7.32.0",
+        "eslint-plugin-no-only-tests": "^2.6.0",
+        "mocha": "^9.2.2",
+        "nyc": "^15.1.0",
+        "rimraf": "^3.0.2",
+        "source-map-support": "^0.5.21",
+        "ts-node": "^10.7.0",
+        "typescript": "^4.6.3"
+    }
+}
