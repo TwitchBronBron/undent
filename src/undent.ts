@@ -54,7 +54,10 @@ export function undent(...args: any[]) {
 
     //apply the trim to each line
     for (let i = 0; i < lines.length; i++) {
-        lines[i] = lines[i].substring(minIndent);
+        //separate the line from its trailing newline (so we don't accidentally trim the newline)
+        const match = /(.*)(\r?\n)?/.exec(lines[i]) as unknown as RegExpExecArray;
+        const [, line, newline] = match;
+        lines[i] = line.substring(minIndent) + (newline ?? '');
     }
 
     let result = lines.join('');

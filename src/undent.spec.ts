@@ -76,4 +76,16 @@ describe('undent', () => {
             `text-text`
         );
     });
+
+    it('retains consecutive newlines in the middle', () => {
+        expect(
+            undent(`
+                alpha
+
+                beta
+            `)
+        ).to.eql(
+            `alpha\n\nbeta`
+        );
+    });
 });
