@@ -16,7 +16,7 @@ jobs:
         with:
           node-version: "10.19.0"
       - run: npm ci
-      - run: npm preversion
+      - run: npm run preversion
       - run: npm run publish-coverage
   npm-release:
     #only run this task if a tag starting with 'v' was used to trigger this (i.e. a tagged release)
