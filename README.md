@@ -33,8 +33,31 @@ const second = undent`
 ## The algorithm
 undent finds the line with the least amount of indentation (excluding whitespace-only lines), and then removes that amount of indentation from every line.
 
+For example:
+
+```
+const text = undent`
+        two levels in
+    one level in
+                three levels in
+`;
+console.log(text);
+```
+prints
+```
+    two levels in
+one level in
+            three levels in
+```
+
+
 ## Features
  - remove leading indentation based on the smallest indentation found for all lines (excluding whitespace-only lines)
  - trim the end of every line
  - remove leading/trailing newlines
  - retain existing newline characters (`\r` or `\r\n`)
+
+
+## Changelog
+[Click here](CHANGELOG.md) to view the changelog.
+
