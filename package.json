@@ -1,6 +1,6 @@
 {
     "name": "undent",
-    "version": "0.0.1",
+    "version": "0.1.0",
     "description": "Smartly removes leading indentation from multiline strings",
     "scripts": {
         "preversion": "npm run build && npm run lint && npm run test",
