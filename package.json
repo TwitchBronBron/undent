@@ -1,6 +1,6 @@
 {
     "name": "undent",
-    "version": "0.1.0",
+    "version": "1.0.0",
     "description": "Smartly removes leading indentation from multiline strings",
     "author": "Bronley Plumb",
     "license": "MIT",
